@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) Hanwha S&C Ltd., 2018. All rights reserved.
+  ~
+  ~ This software is covered by the license agreement between
+  ~ the end user and Hanwha S&C Ltd., and may be
+  ~ used and copied only in accordance with the terms of the
+  ~ said agreement.
+  ~
+  ~ Hanwha S&C Ltd., assumes no responsibility or
+  ~ liability for any errors or inaccuracies in this software,
+  ~ or any consequential, incidental or indirect damage arising
+  ~ out of the use of the software.
+  -->
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="item"
+            type="com.hanwha.hsp_adapter.model.ImageItem" />
+        <variable
+            name="imagebinding"
+            type="com.hanwha.libhsp_adapter.arch.bindingadapter.ImageBindingAdapter" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@mipmap/ic_launcher_round"
+            android:src="@{item.image}"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            tools:text="TextView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            tools:layout_editor_absoluteY="26dp"
+            tools:ignore="MissingConstraints"
+            android:text="@{item.title}"
+            />
+    </android.support.constraint.ConstraintLayout>
+</layout>

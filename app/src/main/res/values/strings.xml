@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">hsp-adapter</string>
+
+    <string-array name="main_items">
+        <item>type</item>
+        <item>image</item>
+    </string-array>
+
+    <!-- TYPE -->
+    <string name="type_add_title">Add Title</string>
+    <string name="type_add_section">Add Section</string>
+</resources>

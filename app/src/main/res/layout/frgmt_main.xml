@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) Hanwha S&C Ltd., 2018. All rights reserved.
+  ~
+  ~ This software is covered by the license agreement between
+  ~ the end user and Hanwha S&C Ltd., and may be
+  ~ used and copied only in accordance with the terms of the
+  ~ said agreement.
+  ~
+  ~ Hanwha S&C Ltd., assumes no responsibility or
+  ~ liability for any errors or inaccuracies in this software,
+  ~ or any consequential, incidental or indirect damage arising
+  ~ out of the use of the software.
+  -->
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="vmodel"
+            type="com.hanwha.hsp_adapter.viewmodel.MainViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+            app:bindAdapter="@{vmodel.adapter}"
+            app:bindItems="@{vmodel.items}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+    </android.support.constraint.ConstraintLayout>
+</layout>

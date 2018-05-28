@@ -1,0 +1,56 @@
+/*
+ * Copyright (C) Hanwha S&C Ltd., 2018. All rights reserved.
+ *
+ * This software is covered by the license agreement between
+ * the end user and Hanwha S&C Ltd., and may be
+ * used and copied only in accordance with the terms of the
+ * said agreement.
+ *
+ * Hanwha S&C Ltd., assumes no responsibility or
+ * liability for any errors or inaccuracies in this software,
+ * or any consequential, incidental or indirect damage arising
+ * out of the use of the software.
+ */
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+ext {
+    support_lib = '27.1.1'
+    constraint  = '1.1.0'   // 이게 relative 보다 비용이 싸다고 함
+    arch        = '1.1.1'
+    slf4j       = '1.7.25'
+    picasso     = '2.5.2'
+    logback     = '1.1.1-11'
+//    okhttp      = '3.5.0'
+//    jackson     = '2.8.5'
+//    ormlite     = '4.48'
+//    zxing       = '3.2.1'
+//    calligraphy = '2.3.0'
+//    dagger2     = '2.16'
+//    rxandroid   = '2.0.2'
+//    rxjava      = '2.1.9'
+}
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.2'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

@@ -1,22 +1,18 @@
 /*
- * FrgmtManager.java
- * Copyright 2013 Burke Choi All rights reserved.
- *             http://www.sarangnamu.net
+ * Copyright (C) Hanwha S&C Ltd., 2018. All rights reserved.
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This software is covered by the license agreement between
+ * the end user and Hanwha S&C Ltd., and may be
+ * used and copied only in accordance with the terms of the
+ * said agreement.
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Hanwha S&C Ltd., assumes no responsibility or
+ * liability for any errors or inaccuracies in this software,
+ * or any consequential, incidental or indirect damage arising
+ * out of the use of the software.
  */
 
-package com.hanwha.hsp_adapter.utils;
+package com.hanwha.hsp_adapter.base;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,7 +27,7 @@ import org.slf4j.LoggerFactory;
 /**
  * <pre>
  * {@code
- *     public class Navigator extends FrgmtManager {
+ *     public class Navigator extends BaseFragmentManager {
  *         private static Navigator inst;
  *
  *         public static Navigator getInstance(FragmentActivity act) {
@@ -60,12 +56,12 @@ import org.slf4j.LoggerFactory;
  *
  * @author <a href="mailto:aucd29@gmail.com">Burke Choi</a>
  */
-public abstract class FrgmtManager {
-    private static final Logger mLog = LoggerFactory.getLogger(FrgmtManager.class);
+public abstract class BaseFragmentManager {
+    private static final Logger mLog = LoggerFactory.getLogger(BaseFragmentManager.class);
 
     protected FragmentManager mFrgmtManager;
 
-    public FrgmtManager() {
+    public BaseFragmentManager() {
     }
 
     public void setFragmentManager(FragmentActivity act) {
@@ -232,6 +228,6 @@ public abstract class FrgmtManager {
     ////////////////////////////////////////////////////////////////////////////////////
 
     public interface TransitionListener {
-        void onEvent(FrgmtManager manager, FragmentTransaction trans);
+        void onEvent(BaseFragmentManager manager, FragmentTransaction trans);
     }
 }

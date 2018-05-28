@@ -16,12 +16,12 @@ package com.hanwha.hsp_adapter;
 
 import android.support.v4.app.FragmentActivity;
 
-import com.hanwha.hsp_adapter.utils.FrgmtManager;
+import com.hanwha.hsp_adapter.base.BaseFragmentManager;
 
 /**
  * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 5. 28.. <p/>
  */
-public class ViewController extends FrgmtManager {
+public class ViewController extends BaseFragmentManager {
     private static ViewController mInst;
 
     public static ViewController get(FragmentActivity act) {

@@ -39,8 +39,9 @@ public class RecyclerBindingAdapter {
             mLog.trace("BIND ADAPTER");
         }
 
-        HspAdapter hspadapter = (HspAdapter) adapter;
+        HspAdapter hspadapter;
         if (recycler.getAdapter() == null) {
+            hspadapter = (HspAdapter) adapter;
             recycler.setAdapter(adapter);
         } else {
             hspadapter = (HspAdapter) recycler.getAdapter();

@@ -12,4 +12,4 @@
  * out of the use of the software.
  */
 
-include ':app', ':libhsp-adapter'
+include ':libhsp-adapter',':app'

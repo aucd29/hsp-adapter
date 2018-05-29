@@ -43,14 +43,12 @@ public class HspAdapter<ITEM> extends RecyclerView.Adapter<HspViewHolder> {
     private ViewModel mViewModel;
     private String[] mLayouts;
 
-    // https://stackoverflow.com/questions/43458146/diffutil-in-recycleview-making-it-autoscroll-if-a-new-item-is-added
-
     public HspAdapter(@NonNull String layoutId) {
         mLayouts = new String[] { layoutId };
     }
 
     public HspAdapter(@NonNull String[] layoutIds) {
-        mLayouts        = layoutIds;
+        mLayouts = layoutIds;
     }
 
     @NonNull
@@ -164,6 +162,7 @@ public class HspAdapter<ITEM> extends RecyclerView.Adapter<HspViewHolder> {
             }
         });
 
+        // https://stackoverflow.com/questions/43458146/diffutil-in-recycleview-making-it-autoscroll-if-a-new-item-is-added
         result.dispatchUpdatesTo(new ListUpdateCallback() {
             private int mFirstInsert = -1;
 

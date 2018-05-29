@@ -33,7 +33,9 @@ ext {
 
 buildscript {
     repositories {
-        google()
+//        google()
+        // jitpack.io 에서 동작하지 않아 이를 수정
+        maven { url "https://maven.google.com" }
         jcenter()
         maven { url "https://jitpack.io" }
     }
@@ -46,7 +48,9 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
+//        google()
+        // jitpack.io 에서 동작하지 않아 이를 수정
+        maven { url "https://maven.google.com" }
         jcenter()
     }
 }

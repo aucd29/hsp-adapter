@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             tools:text="HELLO WORLD"
             android:text="@{item.title}"
-            android:onClick="@{() -> vmodel.show(item.title)}"
+            android:onClick="@{() -> vmodel.show(item.clazz)}"
             android:padding="10dp"
             />
 

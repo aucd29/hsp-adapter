@@ -19,8 +19,10 @@ package com.hanwha.hsp_adapter.model;
  */
 public class MainItem {
     public String title;
+    public Class clazz;
 
-    public MainItem(String title) {
+    public MainItem(String title, Class clazz) {
         this.title = title;
+        this.clazz = clazz;
     }
 }

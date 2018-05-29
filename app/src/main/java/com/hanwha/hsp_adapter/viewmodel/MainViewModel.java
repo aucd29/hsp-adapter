@@ -18,7 +18,6 @@ import android.app.Application;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
-import com.hanwha.hsp_adapter.R;
 import com.hanwha.hsp_adapter.model.MainItem;
 import com.hanwha.hsp_adapter.view.ImageFrgmt;
 import com.hanwha.hsp_adapter.view.TypeFrgmt;
@@ -48,15 +47,10 @@ public class MainViewModel extends RecyclerViewModel<MainItem> {
     }
 
     private void initData() {
-        String[] items = getApplication().getResources().getStringArray(R.array.main_items);
         ArrayList<MainItem> mainItems = new ArrayList<>();
-        for (String item: items) {
-            mainItems.add(new MainItem(item));
 
-            if (mLog.isTraceEnabled()) {
-                mLog.trace("ITEM : " + item);
-            }
-        }
+        mainItems.add(new MainItem("type", TypeFrgmt.class));
+        mainItems.add(new MainItem("image", ImageFrgmt.class));
 
         setItems(mainItems);
 
@@ -65,15 +59,11 @@ public class MainViewModel extends RecyclerViewModel<MainItem> {
         }
     }
 
-    public void show(String key) {
+    public void show(Class clazz) {
         if (mLog.isDebugEnabled()) {
-            mLog.debug("KEY : " + key);
+            mLog.debug("CLASS : " + clazz.getSimpleName());
         }
 
-        if ("type".equals(key)) {
-            changeFrgmt.setValue(TypeFrgmt.class);
-        } else if ("image".equals(key)) {
-            changeFrgmt.setValue(ImageFrgmt.class);
-        }
+        changeFrgmt.setValue(clazz);
     }
 }

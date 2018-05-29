@@ -12,7 +12,7 @@ hsp-adapter 는 data binding 을 xml 에 맞기고 일반적인 경우들에 대
 
 ## gradle 설정
 1. root level build.gradle 에 jitpack 정보를 추가 합니다.
-```
+```groovy
 allprojects {
 	repositories {
 		...
@@ -21,7 +21,7 @@ allprojects {
 }
 ```
 2. app level build.gradle 에 dependency 를 추가 합니다.
-```
+```groovy
 dependencies {
 	implementation 'com.github.aucd29:hsp-adapter:0.1.4'
 }
@@ -33,7 +33,7 @@ dependencies {
 
 hsp adapter 는 RecyclerView 연동을 위한 Base class 를 제공 하며 그 클래스는 com.hanwha.libhsp_adapter.arch.viewmodel.RecyclerViewModel 에 위치 한다.
 사용자는 이 클래스를 상속 받은 후 recycler view 에 사용할 view model 과 adapter, 데이터를 설정할 수 있다.
-```
+```java
 public class TypeViewModel extends RecyclerViewModel<TypeItem> {
     public TypeViewModel(@NonNull Application application) {
         super(application);
@@ -55,11 +55,12 @@ public class TypeViewModel extends RecyclerViewModel<TypeItem> {
 2. xml 설정
 
 recycler view 의 view model 에 등록되어 있는 adapter 와 item 을 선언 bindAdapter 와 bindItems 를 통해 선언 한다.
-```
+```xml
 <layout>
 	<data>
 		<variable name="vmodel" type="....TypeViewModel" />
 	</data>
+	...
 	<android.support.v7.widget.RecyclerView
 	    android:id="@+id/recycler"
 	    android:layout_width="match_parent"
@@ -73,6 +74,7 @@ recycler view 의 view model 에 등록되어 있는 adapter 와 item 을 선언
 	    app:layout_constraintEnd_toEndOf="parent"
 	    app:layout_constraintBottom_toBottomOf="parent"
 	    />
+    ...
 </layout>
 ```
 

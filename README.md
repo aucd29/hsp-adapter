@@ -4,9 +4,11 @@
 [![Release](https://jitpack.io/v/aucd29/hsp-adapter.svg)](https://jitpack.io/#aucd29/hsp-adapter)
 
 hsp-adapter 는 mvvm 기반으로 작성되었으며 하나의 adapter 만으로 여러 형태의 recycler view 를 관리할 수 있다.
-mvvm 은 주요 장점은 view 내에 data binding 을 xml 에서 처리하는 것으로 그 동안 이 점 때문에 recycler view 에 해당하는
-adapter 를 별도로 생성해야 했지만 mvvm 의 경우 data binding 을 xml 에 맞기고 adapter 의 경우 bindingadapter 를
-이용해 가능한 모든 경우에 대해 hsp-adapter 를 대응 되도록 설계 되었다.
+mvvm 은 주요 장점은 view 내에 data binding 을 xml 에서 처리하는 것으로, 기존 방식으로는 recycler view 에 해당하는
+adapter 를 별도로 생성해야 했다.
+
+hsp-adapter 는 data binding 을 xml 에 맞기고 adapter 의 경우 bindingadapter 를
+이용해 가능한 모든 경우에 대해 대응 되도록 설계 되었다.
 
 
 ## gradle 설정

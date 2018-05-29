@@ -15,8 +15,8 @@
 package com.hanwha.libhsp_adapter.arch.adapter;
 
 /**
- * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 4. 27.. <p/>
+ * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 5. 29.. <p/>
  */
-public interface IHspItem {
-    int type();
+public interface IHspDiff {
+    boolean compare(Object item);
 }

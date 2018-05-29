@@ -39,8 +39,15 @@ import java.util.Locale;
 public class HspAdapter<ITEM> extends RecyclerView.Adapter<HspViewHolder> {
     private static final Logger mLog = LoggerFactory.getLogger(HspAdapter.class);
 
+    private static final String METHOD_NAME_VIEW_MODEL = "setVmodel";
+    private static final String METHOD_NAME_ITEM = "setItem";
+    private static final String METHOD_NAME_BIND = "bind";
+
+    /** recycler view 에 출력할 아이템 리스트 */
     private List<ITEM> mItems;
+    /** row 에 해당하는 xml 에 등록될 view model */
     private ViewModel mViewModel;
+    /** row 에 해당하는 xml 파일명 */
     private String[] mLayouts;
 
     public HspAdapter(@NonNull String layoutId) {
@@ -62,6 +69,8 @@ public class HspAdapter<ITEM> extends RecyclerView.Adapter<HspViewHolder> {
             mLog.trace(String.format(Locale.getDefault(), "LAYOUT ID : %s (%d)", mLayouts[viewType], layoutId));
         }
 
+        // view binding class 는 file name 에 의해 생성되므로 hsp adapter 의 생성자에서 전달 받은 파일명을
+        // 기준으로 binding class 를 얻는다.
         try {
             ViewDataBinding binding;
             String bindingClassPath = bindClassName(context, mLayouts[viewType]);
@@ -71,7 +80,7 @@ public class HspAdapter<ITEM> extends RecyclerView.Adapter<HspViewHolder> {
             }
 
             Class<?> bindingClass = Class.forName(bindingClassPath);
-            Method method = bindingClass.getDeclaredMethod("bind", new Class<?>[]{ View.class });
+            Method method = bindingClass.getDeclaredMethod(METHOD_NAME_BIND, new Class<?>[]{ View.class });
             binding = (ViewDataBinding) method.invoke(null, new Object[] { view });
 
             HspViewHolder vh = new HspViewHolder(view);
@@ -88,12 +97,12 @@ public class HspAdapter<ITEM> extends RecyclerView.Adapter<HspViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HspViewHolder holder, int position) {
         if (mViewModel != null) {
-            invokeMethod(holder.mBinding, "setVmodel", mViewModel.getClass(), mViewModel, false);
+            invokeMethod(holder.mBinding, METHOD_NAME_VIEW_MODEL, mViewModel.getClass(), mViewModel, false);
         }
 
         if (mItems != null) {
             ITEM item = mItems.get(position);
-            invokeMethod(holder.mBinding, "setItem", item.getClass(), item, true);
+            invokeMethod(holder.mBinding, METHOD_NAME_ITEM, item.getClass(), item, true);
         }
 
         holder.mBinding.executePendingBindings();
@@ -154,8 +163,8 @@ public class HspAdapter<ITEM> extends RecyclerView.Adapter<HspViewHolder> {
                 ITEM oldItem = oldItems.get(oldItemPosition);
                 ITEM newItem = items.get(newItemPosition);
 
-                if (oldItem instanceof IHspItem) {
-                    return ((IHspItem) oldItem).compare(newItem);
+                if (oldItem instanceof IHspDiff) {
+                    return ((IHspDiff) oldItem).compare(newItem);
                 }
 
                 return oldItem.equals(newItem);

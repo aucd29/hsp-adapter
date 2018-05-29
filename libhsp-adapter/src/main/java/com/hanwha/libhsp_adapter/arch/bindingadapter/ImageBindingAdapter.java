@@ -44,13 +44,16 @@ public class ImageBindingAdapter {
 
     @BindingAdapter("android:src")
     public static void imageSrc(@NonNull ImageView view, @DrawableRes int resid) {
-        if (mLog.isTraceEnabled()) {
-            mLog.trace("BIND IMAGE : " + resid);
+        if (mLog.isDebugEnabled()) {
+            mLog.debug("BIND IMAGE : (" + view + ") " + resid);
         }
 
-        Picasso.with(view.getContext()).load(resid)
-                .placeholder(R.drawable.ic_autorenew_black_24dp)
-                .into(view);
+//        Picasso.with(view.getContext()).load(resid)
+////                .placeholder(R.drawable.ic_autorenew_black_24dp)
+//                .into(view);
+
+        // 리소스의 경우 피카소에서 제대로 동작하지 않아 임시적으로 수정
+        view.setImageResource(resid);
     }
 
     @BindingAdapter("android:src")

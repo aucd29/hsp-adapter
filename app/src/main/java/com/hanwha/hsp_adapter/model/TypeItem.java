@@ -14,12 +14,13 @@
 
 package com.hanwha.hsp_adapter.model;
 
+import com.hanwha.libhsp_adapter.arch.adapter.IHspDiff;
 import com.hanwha.libhsp_adapter.arch.adapter.IHspItem;
 
 /**
  * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 5. 28.. <p/>
  */
-public class TypeItem implements IHspItem {
+public class TypeItem implements IHspItem, IHspDiff {
     public static final int TYPE_SECTION = 1;
     public static final int TYPE_TITLE   = 0;
 

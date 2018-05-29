@@ -11,7 +11,7 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
+#*.jar // gradle-wrapper.jar 를 jitpack.io 에서 필요로 함 
 *.war
 *.nar
 *.ear

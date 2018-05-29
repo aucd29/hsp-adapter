@@ -25,7 +25,8 @@ dependencies {
 
 ## 코드 작성
 
-1. ViewModel
+1. ViewModel 생성
+
 hsp adapter 는 RecyclerView 연동을 위한 Base class 를 제공 하며 그 클래스는 com.hanwha.libhsp_adapter.arch.viewmodel.RecyclerViewModel 에 위치 한다.
 사용자는 이 클래스를 상속 받은 후 recycler view 에 사용할 view model 과 adapter, 데이터를 설정할 수 있다.
 ```

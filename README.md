@@ -54,21 +54,26 @@ public class TypeViewModel extends RecyclerViewModel<TypeItem> {
 
 2. xml 설정
 
-recycler view 에 view model 에 등록되어 있는 adapter 와 item 을 선언 bindAdapter 와 bindItems 를 통해 선언 한다.
+recycler view 의 view model 에 등록되어 있는 adapter 와 item 을 선언 bindAdapter 와 bindItems 를 통해 선언 한다.
 ```
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/recycler"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:orientation="vertical"
-    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
-    app:bindAdapter="@{vmodel.adapter}"
-    app:bindItems="@{vmodel.items}"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/add_title"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    />
+<layout>
+	<data>
+		<variable name="vmodel" type="....TypeViewModel" />
+	</data>
+	<android.support.v7.widget.RecyclerView
+	    android:id="@+id/recycler"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp"
+	    android:orientation="vertical"
+	    app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+	    app:bindAdapter="@{vmodel.adapter}"
+	    app:bindItems="@{vmodel.items}"
+	    app:layout_constraintStart_toStartOf="parent"
+	    app:layout_constraintTop_toBottomOf="@+id/add_title"
+	    app:layout_constraintEnd_toEndOf="parent"
+	    app:layout_constraintBottom_toBottomOf="parent"
+	    />
+</layout>
 ```
 
 

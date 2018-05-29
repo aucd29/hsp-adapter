@@ -23,7 +23,7 @@ allprojects {
 2. app level build.gradle 에 dependency 를 추가 합니다.
 ```groovy
 dependencies {
-	implementation 'com.github.aucd29:hsp-adapter:0.1.4'
+	implementation 'com.github.aucd29:hsp-adapter:0.1.5'
 }
 ```
 

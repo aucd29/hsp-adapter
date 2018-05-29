@@ -4,6 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.hanwha.hsp_adapter"
+//        buildToolsVersion "27.0.3"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1

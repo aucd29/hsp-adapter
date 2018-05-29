@@ -12,5 +12,5 @@
  * out of the use of the software.
  */
 
-/*include ':libhsp-adapter',':app'*/
-include ':libhsp-adapter'
+include ':libhsp-adapter',':app'
+//include ':libhsp-adapter'

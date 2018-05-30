@@ -14,6 +14,7 @@
 
 package com.hanwha.hsp_adapter;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 
 import com.hanwha.hsp_adapter.base.BaseFragmentManager;
@@ -30,6 +31,16 @@ public class ViewController extends BaseFragmentManager {
         }
 
         mInst.setFragmentManager(act);
+
+        return mInst;
+    }
+
+    public static ViewController get(Fragment frgmt) {
+        if (mInst == null) {
+            mInst = new ViewController();
+        }
+
+        mInst.setFragmentManager(frgmt.getActivity());
 
         return mInst;
     }

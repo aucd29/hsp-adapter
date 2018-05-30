@@ -20,6 +20,7 @@ import android.support.annotation.Nullable;
 import com.hanwha.hsp_adapter.R;
 import com.hanwha.hsp_adapter.ViewController;
 import com.hanwha.hsp_adapter.base.BaseFragment;
+import com.hanwha.hsp_adapter.base.FragmentParams;
 import com.hanwha.hsp_adapter.databinding.FrgmtMainBinding;
 import com.hanwha.hsp_adapter.viewmodel.MainViewModel;
 
@@ -39,7 +40,12 @@ public class MainFrgmt extends BaseFragment<FrgmtMainBinding> {
         MainViewModel vmodel = viewModel(MainViewModel.class);
         vmodel.init();
         vmodel.changeFrgmt.observe(this, classType -> {
-            ViewController.get(getActivity()).replace(R.id.main_layout, classType);
+//            ViewController.get(getActivity()).replace(R.id.main_layout, classType);
+
+            ViewController.get(this).show(FragmentParams.builder()
+                    .containerId(R.id.main_layout)
+                    .fragment(classType)
+                    .build());
         });
 
         mBinding.setVmodel(vmodel);

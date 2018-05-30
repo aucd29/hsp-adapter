@@ -15,6 +15,9 @@
 package com.hanwha.hsp_adapter.base;
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -82,10 +85,76 @@ public abstract class BaseFragmentManager {
         mFrgmtManager = frgmt.getChildFragmentManager();
     }
 
+    public Fragment show(@NonNull FragmentParams params) {
+        try {
+            Fragment frgmt = instanceFragment(params.fragment);
+            if (frgmt == null) {
+                mLog.error("ERROR: frgmt == null");
+                return null;
+            }
+
+            if (frgmt.isVisible()) {
+                if (mLog.isDebugEnabled()) {
+                    mLog.debug("VISIBLE FRAGMENT " + params.fragment.getSimpleName());
+                }
+
+                return frgmt;
+            }
+
+            if (params.bundle != null) {
+                frgmt.setArguments(params.bundle);
+            }
+
+            FragmentTransaction trans = mFrgmtManager.beginTransaction();
+            String tagName            = frgmt.getClass().getName();
+
+            if (params.addMode) {
+                trans.add(params.containerViewId, frgmt, tagName);
+            } else {
+                if (params.transitionListener != null) {
+                    params.transitionListener.onEvent(this, trans);
+                }
+
+                trans.replace(params.containerViewId, frgmt, tagName);
+            }
+
+            if (params.backStack) {
+                trans.addToBackStack(tagName);
+            }
+
+            trans.commit();
+
+            return frgmt;
+        } catch (Exception e) {
+            e.printStackTrace();
+            mLog.error("ERROR: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    private @Nullable Fragment instanceFragment(Class<?> clazz) {
+        Fragment frgmt = mFrgmtManager.findFragmentByTag(clazz.getName());
+        if (frgmt != null) {
+            return frgmt;
+        }
+
+        try {
+            return (Fragment) clazz.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+            mLog.error("ERROR: " + e.getMessage());
+        }
+
+        return null;
+    }
+
+    @Deprecated
     public void add(int id, Class<?> cls) {
         add(id, cls, null);
     }
 
+    @Deprecated
     public void add(int id, Class<?> cls, TransitionListener listener) {
         try {
             Fragment frgmt = (Fragment) cls.newInstance();
@@ -110,26 +179,32 @@ public abstract class BaseFragmentManager {
         }
     }
 
+    @Deprecated
     public void resetAdd(int id, Class<?> cls) {
         replace(id, cls, false, null, null);
     }
 
+    @Deprecated
     public Fragment replace(int id, Class<?> cls) {
         return replace(id, cls, true, null, null);
     }
 
+    @Deprecated
     public Fragment replace(int id, Class<?> cls, TransitionListener listener) {
         return replace(id, cls, true, null, listener);
     }
 
+    @Deprecated
     public Fragment replace(int id, Class<?> cls, Bundle bundle) {
         return replace(id, cls, true, bundle, null);
     }
 
+    @Deprecated
     public Fragment replace(int id, Class<?> cls, Bundle bundle, TransitionListener listener) {
         return replace(id, cls, true, bundle, listener);
     }
 
+    @Deprecated
     private Fragment replace(int id, Class<?> cls, boolean stack, Bundle bundle, TransitionListener listener) {
         try {
             Fragment frgmt = mFrgmtManager.findFragmentByTag(cls.getName());
@@ -230,4 +305,5 @@ public abstract class BaseFragmentManager {
     public interface TransitionListener {
         void onEvent(BaseFragmentManager manager, FragmentTransaction trans);
     }
+
 }

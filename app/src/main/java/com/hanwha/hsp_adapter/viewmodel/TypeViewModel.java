@@ -1,15 +1,17 @@
 /*
- * Copyright (C) Hanwha S&C Ltd., 2018. All rights reserved.
+ * Copyright (C) Hanwha System Corp. 2018. All rights reserved.
  *
- * This software is covered by the license agreement between
- * the end user and Hanwha S&C Ltd., and may be
- * used and copied only in accordance with the terms of the
- * said agreement.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * Hanwha S&C Ltd., assumes no responsibility or
- * liability for any errors or inaccuracies in this software,
- * or any consequential, incidental or indirect damage arising
- * out of the use of the software.
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.hanwha.hsp_adapter.viewmodel;
@@ -17,7 +19,9 @@ package com.hanwha.hsp_adapter.viewmodel;
 import android.app.Application;
 import android.support.annotation.NonNull;
 
+import com.hanwha.hsp_adapter.model.BaseTypeItem;
 import com.hanwha.hsp_adapter.model.TypeItem;
+import com.hanwha.hsp_adapter.model.TypeItemSection;
 import com.hanwha.libhsp_adapter.arch.viewmodel.RecyclerViewModel;
 
 import java.util.ArrayList;
@@ -25,7 +29,7 @@ import java.util.ArrayList;
 /**
  * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 5. 28.. <p/>
  */
-public class TypeViewModel extends RecyclerViewModel<TypeItem> {
+public class TypeViewModel extends RecyclerViewModel<BaseTypeItem> {
     int countTitle = 0;
     int countSection = 0;
 
@@ -39,18 +43,18 @@ public class TypeViewModel extends RecyclerViewModel<TypeItem> {
     }
 
     private void initData() {
-        ArrayList<TypeItem> items = new ArrayList<>();
-        items.add(new TypeItem(TypeItem.TYPE_SECTION, "SECTION"));
-        items.add(new TypeItem(TypeItem.TYPE_TITLE, "버튼을 선택하여 데이터를 추가하세요"));
+        ArrayList<BaseTypeItem> items = new ArrayList<>();
+        items.add(new TypeItemSection("SECTION"));
+        items.add(new TypeItem("버튼을 선택하여 데이터를 추가하세요"));
 
         setItems(items);
     }
 
     public void addTitle() {
-        this.items.add(new TypeItem(TypeItem.TYPE_TITLE, "추가 데이터 " + (++countTitle)));
+        this.items.add(new TypeItem("추가 데이터 " + (++countTitle)));
     }
 
     public void addSection() {
-        this.items.add(new TypeItem(TypeItem.TYPE_SECTION, "SECTION " + (++countSection)));
+        this.items.add(new TypeItemSection("SECTION " + (++countSection)));
     }
 }

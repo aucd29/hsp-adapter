@@ -14,11 +14,29 @@
  * limitations under the License.
  */
 
-package com.hanwha.libhsp_adapter.arch.adapter;
+package com.hanwha.hsp_adapter.model;
 
 /**
- * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 5. 29.. <p/>
+ * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 6. 11.. <p/>
  */
-public interface IHspDiff {
-    boolean compare(Object item);
+public class TypeItemSection implements BaseTypeItem {
+    public String title;
+    public int color;
+
+    public TypeItemSection(String title) {
+        this.title = title;
+        this.color = 0xffdfdfdf;
+    }
+
+    @Override
+    public int type() {
+        return BaseTypeItem.TYPE_SECTION;
+    }
+
+    @Override
+    public boolean compare(Object item) {
+        TypeItemSection newItem = (TypeItemSection) item;
+
+        return this.title.equals(newItem.title) && color == newItem.color;
+    }
 }

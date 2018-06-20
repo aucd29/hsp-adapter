@@ -1,15 +1,17 @@
 /*
- * Copyright (C) Hanwha S&C Ltd., 2018. All rights reserved.
+ * Copyright (C) Hanwha System Corp. 2018. All rights reserved.
  *
- * This software is covered by the license agreement between
- * the end user and Hanwha S&C Ltd., and may be
- * used and copied only in accordance with the terms of the
- * said agreement.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- * Hanwha S&C Ltd., assumes no responsibility or
- * liability for any errors or inaccuracies in this software,
- * or any consequential, incidental or indirect damage arising
- * out of the use of the software.
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package com.hanwha.hsp_adapter.model;
@@ -20,27 +22,22 @@ import com.hanwha.libhsp_adapter.arch.adapter.IHspItem;
 /**
  * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 5. 28.. <p/>
  */
-public class TypeItem implements IHspItem, IHspDiff {
-    public static final int TYPE_SECTION = 1;
-    public static final int TYPE_TITLE   = 0;
-
-    public int type;
+public class TypeItem implements BaseTypeItem {
     public String title;
 
-    public TypeItem(int type, String title) {
-        this.type  = type;
+    public TypeItem(String title) {
         this.title = title;
     }
 
     @Override
     public int type() {
-        return type;
+        return BaseTypeItem.TYPE_TITLE;
     }
 
     @Override
     public boolean compare(Object item) {
         TypeItem newItem = (TypeItem) item;
 
-        return this.type == newItem.type && this.title.equals(newItem.title);
+        return this.title.equals(newItem.title);
     }
 }

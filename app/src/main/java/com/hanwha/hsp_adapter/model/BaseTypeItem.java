@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package com.hanwha.libhsp_adapter.arch.adapter;
+package com.hanwha.hsp_adapter.model;
+
+import com.hanwha.libhsp_adapter.arch.adapter.IHspDiff;
+import com.hanwha.libhsp_adapter.arch.adapter.IHspItem;
 
 /**
- * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 5. 29.. <p/>
+ * Created by <a href="mailto:aucd29@gmail.com">Burke Choi</a> on 2018. 6. 11.. <p/>
  */
-public interface IHspDiff {
-    boolean compare(Object item);
+public interface BaseTypeItem extends IHspItem, IHspDiff {
+    int TYPE_SECTION = 1;
+    int TYPE_TITLE   = 0;
 }
